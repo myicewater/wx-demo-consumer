@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>体验金详情</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no" />
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/main.css">
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+<style>
+	body{ background: #ffffff;}
+	.txt-description p{ display: none;}
+</style>
+</head>
+<body>
+<script>
+if(localStorage.vitualDetailBackFlag == 1 || localStorage.vitualDetailBackFlag == null || typeof(localStorage.vitualDetailBackFlag) == "undefined"){
+	
+}else{
+	localStorage.vitualDetailBackFlag = 1;
+	history.go(0);
+}
+</script>
+	<div class="wrapper">
+		<div class="pro-detail">
+			<div class="tyGold_top">
+				<span class="exclusive">体验金<br>专享</span>
+                <img class="lk_icon" src="../images/lk_icon01.png">
+			</div>
+			<div class="nav">
+				<ul>
+					<li>
+						<p>预期年化收益</p>
+						<span><font>6.6</font>%</span>
+					</li>
+					<li>
+						<p>投资期限</p>
+						<span><font>2</font>天</span>
+					</li>
+					<li>
+						<p>已投人数</p>
+						<span style="font-size:1rem;">${buyCount}</span>
+					</li>
+				</ul>
+				<div class="fix"></div>
+			</div>
+			<div class="cont-bt">
+				<div class="Profit">
+					<div class="four">
+						<a><img src="../images/pro_001.png"></a>
+						<a><img src="../images/pro_002.png"></a>
+						<a><img src="../images/pro_003.png"></a>
+						<a><img src="../images/pro_004.png"></a>
+					</div>
+					<p class="p-2" style="color:#000000; border-top: 1px solid #e5e5e5;">活动详情</p>
+					<p class="introduce" style="border:none;">　　中秋佳节及建国66周年来临之际，邻客金融特推出中秋、国庆“双节拿本金”活动。活动时间为9月19日——10月19日<br>1、注册送10000元体验金，到期即可提现，无最低提现限制，无手续费。<br>2、邀请好友送10000元体验金，邀请越多，奖励越多，无上限。<br>3、成功邀请好友投资将获得好友投资金额的年化收益</p>
+				</div>	
+			</div>
+		</div>
+		<div style=" height: 8rem;"></div>
+		<div class="tcBox hide">
+			<div class="opa-div"></div>
+			<div style=" position: fixed; bottom:0px; width:100%; background:#f5f5f5; padding-bottom:0.3rem; z-index: 6;">
+				<div class="way">
+					<h2>到期处理方式</h2>
+					<div class="radio3">
+					  <a><input type="radio" id="nba" checked="checked" name="sport">
+					  <label name="nba" class="checked">到期赎回</label></a>
+					  <a><input type="radio" id="cba" name="sport">
+					  <label name="cba">本金续投</label></a>
+					  <a><input type="radio" id="cba" name="sport">
+					  <label name="cba">本息续投</label></a>
+					</div>
+					<div class="fix"></div>
+					<div class="expectSy">
+						<span>预期年化收益率<em>7.5%</em></span>
+						<span>预期收益<em>300元</em></span>
+					</div>
+					<p><input type="text" placeholder="100元起投"></p>
+					<a class="error">*****信息提示</a>
+				</div>
+				<p class="tc"><a class="btn invest"><span>立即投资</span></a></p>
+			</div>
+		</div>
+		<!-- 弹层 -->
+		<div class="txt-description hide">
+			<p>T+0计息：投资次日开始计息</p>
+			<p>资金保障计划：筛选优质债权，服务微小商户。</p>
+			<p>快速投资  完善安全技术 三方支付</p>
+			<p>及时兑付 到期还本付息</p>
+		</div>
+		<div class="consult surplus-ticket">
+			<div class="experience-gold">
+				<p>剩余可用体验金券<span>${experienceNum}</span>张</p>
+				<div>
+					<img src="../images/voucher.png"><a class="subtract" id="jian"></a><span id="num">${experienceNum}</span><a class="add" id="add"></a>
+				</div>
+			</div>
+			<a onclick="buy();" class="btn send"><span>立即投资</span></a>
+		</div>
+	</div>
+	<script>
+	
+	var leftCount = "${experienceNum}";
+	var vitualNum = leftCount;
+	function buy(){
+		
+		if("unbound"==localStorage.userId){
+			window.location.href="${ctx}/login/unbound.htm"
+			return;
+		}
+		
+		if(vitualNum <=0){
+			window.location.href='${ctx}/activity/toMyExperienceGold.htm?userId='+localStorage.userId
+			return;
+		}
+
+		 var url = "${ctx}/activity/buyVitualProduct.htm";
+		 $.ajax({
+		  type: "post",
+		        dataType: "json",
+		        url: url,
+		        data: {
+		         "userId":localStorage.userId,
+		         "buyAmount":vitualNum*10000
+		        },
+		        success: function(data){
+		            if(data.resultCode == "00"){
+		            	 localStorage.vitualDetailBackFlag = 0;
+		                    window.location.href="${ctx}/activity/toBuySuccessPage.htm";
+		            }else{
+		                    alert("");
+		            }
+		        }
+		 });
+	}
+	
+	    $(function() {
+			// 体验金券加减
+			$("#jian").click(function(){
+    			var num = Number($(this).next().text());
+	    	  	if (num>0) {
+	    	  		$(this).next().text(num-1);
+	    	  		vitualNum --;
+	    	  	};	
+			});
+			$("#add").click(function(){
+				var num = Number($(this).prev().text());
+				if (num<leftCount) {
+	    	  		$(this).prev().text(num+1);
+	    	  		vitualNum ++;
+	    	  	};	
+			});
+			
+			// 点击四张图片显示对应文字
+			$(".four a").click( function(){
+				$(".txt-description").show();
+				var index=$(this).index();
+				$(".txt-description p").eq(index).show().siblings().hide();
+			})
+			$(".txt-description").click(function(){
+				$(this).hide();
+			})
+
+			//？？？
+			$(".opa-div").click(function(){
+				$(".tcBox").hide();
+			})
+		});
+	</script>
+</body>
+</html>

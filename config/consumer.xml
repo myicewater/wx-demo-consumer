@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans         
+	http://www.springframework.org/schema/beans/spring-beans.xsd         
+	http://code.alibabatech.com/schema/dubbo
+	http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+	<dubbo:application name="zookeeper_consumer" />
+	<dubbo:registry protocol="zookeeper" address="192.168.223.129:2181" />
+<!-- 这里的address只是测试的zookeeper的地址，如果上线，按上线地址为准 -->
+	<dubbo:reference id="helloService2" interface="dubble.service.hello.HelloService2"  >
+	</dubbo:reference>
+<!-- 这里的group只是测试的group，上线按上线group为准 -->
+	
+</beans>

@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.link.dao.weixin.TWeixinInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.link.model.weixin.TWeixinInfo" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="userId" property="userId" jdbcType="CHAR" />
+    <result column="openId" property="openId" jdbcType="VARCHAR" />
+    <result column="isConnected" property="isConnected" jdbcType="CHAR" />
+    <result column="createTime" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updateTime" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="wxImgUrl" property="wxImgUrl" jdbcType="VARCHAR" />
+    <result column="nickName" property="nickName" jdbcType="VARCHAR" />
+    <result column="sex" property="sex" jdbcType="CHAR" />
+    <result column="city" property="city" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="VARCHAR" />
+    <result column="province" property="province" jdbcType="VARCHAR" />
+    <result column="language" property="language" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, userId, openId, isConnected, createTime, updateTime, wxImgUrl, nickName, sex, 
+    city, country, province, language
+  </sql>
+  
+  <select id="getWeixinInfoByOpenId" resultMap="BaseResultMap" parameterType="string">
+  	select * from t_weixin_info where openId = #{openId}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_weixin_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_weixin_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.link.model.weixin.TWeixinInfo" >
+    insert into t_weixin_info (id, userId, openId, 
+      isConnected, createTime, updateTime, 
+      wxImgUrl, nickName, sex, 
+      city, country, province, 
+      language)
+    values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=CHAR}, #{openId,jdbcType=VARCHAR}, 
+      #{isConnected,jdbcType=CHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{wxImgUrl,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, 
+      #{city,jdbcType=VARCHAR}, #{country,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{language,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.link.model.weixin.TWeixinInfo" >
+    insert into t_weixin_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="userId != null" >
+        userId,
+      </if>
+      <if test="openId != null" >
+        openId,
+      </if>
+      <if test="isConnected != null" >
+        isConnected,
+      </if>
+      <if test="createTime != null" >
+        createTime,
+      </if>
+      <if test="updateTime != null" >
+        updateTime,
+      </if>
+      <if test="wxImgUrl != null" >
+        wxImgUrl,
+      </if>
+      <if test="nickName != null" >
+        nickName,
+      </if>
+      <if test="sex != null" >
+        sex,
+      </if>
+      <if test="city != null" >
+        city,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="language != null" >
+        language,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="userId != null" >
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="isConnected != null" >
+        #{isConnected,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wxImgUrl != null" >
+        #{wxImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        #{sex,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        #{language,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.link.model.weixin.TWeixinInfo" >
+    update t_weixin_info
+    <set >
+      <if test="userId != null" >
+        userId = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="openId != null" >
+        openId = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="isConnected != null" >
+        isConnected = #{isConnected,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null" >
+        createTime = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null" >
+        updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wxImgUrl != null" >
+        wxImgUrl = #{wxImgUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null" >
+        nickName = #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null" >
+        sex = #{sex,jdbcType=CHAR},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="language != null" >
+        language = #{language,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where openId = #{openId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.link.model.weixin.TWeixinInfo" >
+    update t_weixin_info
+    set userId = #{userId,jdbcType=CHAR},
+      openId = #{openId,jdbcType=VARCHAR},
+      isConnected = #{isConnected,jdbcType=CHAR},
+      createTime = #{createTime,jdbcType=TIMESTAMP},
+      updateTime = #{updateTime,jdbcType=TIMESTAMP},
+      wxImgUrl = #{wxImgUrl,jdbcType=VARCHAR},
+      nickName = #{nickName,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=CHAR},
+      city = #{city,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      language = #{language,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

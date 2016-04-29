@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>新手专区</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no" />
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/main.css">
+<script type="text/javascript" src="../js/zepto.min.js" ></script>
+</head>
+<body>
+
+<script type="text/javascript">
+if("${userId}" != null && "${userId}" != ""){
+	localStorage.userId="${userId}";
+}
+if("${openId}" != null && "${openId}" != ""){
+	localStorage.openId="${openId}";
+}
+
+console.log(localStorage.openId)
+</script>
+	<div class="wrapper">
+		<div class="newGuide">
+			<p class="banner"><img src="../images/n_banner.png"></p>
+			<div class="explain">
+				<div class="answer answer1">
+					<span class="s-bg">邻客金融在做什么？</span>
+					<p>邻客金融是专业互联网金融理财平台，<br>
+帮助客户在最短时间内找到合适的专业理财顾<br>
+问，从根本上帮助所有客户做好切合自身<br>
+以及家庭成长规划的财富管理服务。</p>
+				</div>
+				<div class="answer answer2">
+					<span class="s-bg">我为什么选择邻客金融？</span>
+					<ul>
+						<li class="li-a"><a>正规金融机构合作<span><em>FICOM</em>风控体系</span></a></li>
+						<li class="li-q"><a><em>高中低全系列</em>产品<span>以及各类专业理财师</span></a></li>
+						<li class="li-y"><a>高收益<em>低门槛</em><span>
+活期收益30倍银行存款利息</span><span><em>年收益＞10%</em></span></a></li>
+					</ul>
+				</div>
+				<div class="answer answer3">
+					<span class="s-bg">可以投资那些产品？</span>
+					<div class="pro-what">
+						<a><img src="../images/n_pro1.png"><span>基金</span></a>
+						<a><img src="../images/n_pro2.png"><span>保险</span></a>
+						<a><img src="../images/n_pro3.png"><span>信托</span></a>
+						<a><img src="../images/n_pro4.png"><span>理财</span></a>
+						<a><img src="../images/n_pro5.png"><span>私募基金</span></a>
+						<a><img src="../images/n_pro6.png"><span>组合类产品</span></a>
+						<div class="fix"></div>
+					</div>
+				</div>
+				<div class="answer answer4">
+					<span class="s-bg">我有兴趣，如何投资？</span>
+					<div class="do-flow">
+						<a>注册</a>
+						<p><img src="../images/n_arow.png"></p>
+						<a>实名认证</a>
+						<p><img src="../images/n_arow.png"></p>
+						<a>绑定银行卡</a>
+						<p><img src="../images/n_arow.png"></p>
+						<a>投资</a>
+						<p><img src="../images/n_arow.png"></p>
+						<a>获得收益</a>
+					</div>
+				</div>
+				<a href="${ctx}/login/register.htm?openId=${openId}" class="btn-redPaper">注册领红包</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

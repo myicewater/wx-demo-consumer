@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+<title>打开礼盒</title>
+</head>
+<script src="${ctx}/js/jquery-1.10.2.min.js"></script>
+<script src="${ctx}/js/hammer.js"></script>
+<script src="${ctx}/js/Transit.js"></script>
+<link href="${ctx}/css/prize.css" rel="stylesheet">
+<link href="${ctx}/css/animate.min.css" rel="stylesheet">
+<link href="${ctx}/css/animation.css" rel="stylesheet">
+<!--<link href="css/fakeloader.css" rel="stylesheet">
+-->
+
+<script>
+
+if(localStorage.orderConfirmBackFlag == 1 || localStorage.orderConfirmBackFlag == null || typeof(localStorage.orderConfirmBackFlag) == "undefined"){
+	 
+}else{
+ localStorage.orderConfirmBackFlag = 1;
+ history.go(0);
+}
+
+
+	var leftTimes = Number("${leftTimes}")
+	var openId  = "${openId}"
+	var bodyWidth=document.documentElement.clientWidth
+	|| window.innerWidth
+	|| document.body.clientWidth;
+	var bodyHeight=window.innerHeight
+	|| document.documentElement.clientHeight
+	|| document.body.clientHeight;
+	$(function(){
+		$("section").css("width",bodyWidth);
+		$("section").css("height",bodyHeight);
+		$("body").css("width",bodyWidth);
+		$("body").css("height",bodyHeight);
+		$("#page91").css("height",bodyHeight);
+		$("#page92").css("height",bodyHeight);
+		$(".tabBox .bd img").css("width",bodyWidth);
+		$("#leftTabBox").css("width",bodyWidth);
+			$("#prize_page1 .clickbtn1").transition({ delay:1500 ,opacity: 1 },1000);
+			$("#prize_page1 .wordp1").addClass("animated fadeInUp");
+			
+			$(".prize_show").click(function(){
+				
+				if($(".prize_show").attr("src").indexOf("failure.png") > -1){
+					<#if boxType == '1'>
+					$(".prize_show").attr("src","${ctx}/images/prize/img02.png")
+					</#if>
+					
+					<#if boxType == '2'>
+					$(".prize_show").attr("src","${ctx}/images/prize/img04.png")
+					</#if>
+					
+					<#if boxType == '3'>
+					$(".prize_show").attr("src","${ctx}/images/prize/img03.png")
+					</#if>
+					return;
+				}
+				
+				if(leftTimes == '99'){
+					return;
+				}
+				if(leftTimes <= 0){
+					alert("抱歉，您已经没有抽奖次数了")
+					return;
+				}
+				leftTimes--;
+				
+				var url = "${ctx}/award/award.htm";
+		     	 $.ajax({
+		     	  type: "post",
+		     	        dataType: "json",
+		     	        url: url,
+		     	        data: {
+		     	          "openId":openId
+		     	        },
+		     	        success: function(data){
+		     	            if(data.code == "0" ||data.code == "99"  ){
+		     	                   // alert("");
+		     	                   $(".prize_show").attr("src","${ctx}/images/prize/failure.png")
+		     	            }else{
+		     	                  //  alert("");
+		     	                  $(".prize"+data.code).css("display","block")
+		     	            }
+		     	            
+		     	           
+		     	           $("#drawTimes").text(leftTimes)
+		     	        }
+		     	 });
+				
+				
+			})
+			
+			
+			$(".prize").click(function(){
+				$(this).hide();
+			});
+
+	})
+	
+	
+		
+	
+	function checkAward(){
+		localStorage.orderConfirmBackFlag = 0;
+		window.location.href="${ctx}/music/checkAward.htm?openId=${openId}"
+	}
+	
+</script>
+<body>
+<section id="prize_page1">
+  <#if leftTimes == '99'>
+  <p class="title">先去领取一个礼盒吧！请点击三里屯太古里官方微信底部“领取礼盒”按钮</p>
+  <#else>
+  <p class="title">您还能打开<span id="drawTimes">${leftTimes}</span>个抽奖礼盒</p>
+  </#if>
+  
+  <!-- <img class="clickbtn1" src="${ctx}/images/prize/pclick1.png"/> -->
+  <#if boxType == '1'>
+  <img class="prize_show" src="${ctx}/images/img02.png"/>
+  </#if>
+  <#if boxType == '2'>
+  <img class="prize_show" src="${ctx}/images/img04.png"/>
+  </#if>
+  <#if boxType == '3'>
+  <img class="prize_show" src="${ctx}/images/img03.png"/>
+  </#if>
+  <div id="btn" onclick="checkAward()" style=" position:absolute; width:50%; left:25%; top:70%; border:1px solid #fff; font-size:15px; text-align:center; padding:5px 0; color:#fff;">查看已中奖品</div>
+  <img class="wordp1" src="${ctx}/images/prize/wordp1.png"/>
+</section>
+<section class="prize prize1">
+  <img src="${ctx}/images/prize/prize1.png" />
+</section>
+<section class="prize prize2">
+  <img src="${ctx}/images/prize/prize2.png" />
+</section>
+<section class="prize prize3">
+  <img src="${ctx}/images/prize/prize3.png" />
+</section>
+<section class="prize prize4">
+  <img src="${ctx}/images/prize/prize4.png" />
+
+</section>
+</body>
+</html>

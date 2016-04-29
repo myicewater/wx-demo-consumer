@@ -1,0 +1,554 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" /> 
+<title>音乐节</title>
+
+<script src="${ctx}/js/jquery-1.10.2.min.js"></script>
+<script src="${ctx}/js/hammer.js"></script>
+<script src="${ctx}/js/Transit.js"></script>
+<script src="${ctx}/js/jweixin-1.0.0.js"></script>
+<script src="${ctx}/js/TouchSlide.1.1.js"></script>
+<link href="${ctx}/css/style.css" rel="stylesheet" />
+<link href="${ctx}/css/animate.min.css" rel="stylesheet" />
+<link href="${ctx}/css/animation.css" rel="stylesheet" />
+<!--<link href="css/fakeloader.css" rel="stylesheet" />
+--><script>
+	var bodyWidth=document.documentElement.clientWidth
+	|| window.innerWidth
+	|| document.body.clientWidth;
+	var bodyHeight=window.innerHeight
+	|| document.documentElement.clientHeight
+	|| document.body.clientHeight;
+	var boxType= 1;
+	$(function(){
+		
+		$("section").css("width",bodyWidth);
+		$("section").css("height",bodyHeight);
+		$("body").css("width",bodyWidth);
+		$("body").css("height",bodyHeight);
+		$("#page91").css("height",bodyHeight);
+		$("#page92").css("height",bodyHeight);
+		$("#page92").css("width",0)
+		$(".tabBox .bd ul").css("width",bodyWidth);
+		$(".tabBox .bd img").css("width",bodyWidth);
+		$("#leftTabBox").css("width",bodyWidth);
+		
+		/**************************第一页动画***********************/
+		$("#page1 .page1_top").transition({delay:2500 ,left:"50%",opacity:1 },500);		
+		$("#page1 .page1_right").transition({delay:3000 ,left:"0%",opacity:1 },500);
+		$(".clickbtn1").transition({ delay:3500 ,opacity: 1 },1000);
+		$("#page1 .musicfu").transition({opacity: 1 },1000);
+		/**************************第二页动画***********************/
+		$(".clickbtn1").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page2 .fybtn").css("display","block");
+			$(this).parent().transition({y:"-100%"},500);
+			$($(this).parent()).next("section").transition({y:"-100%"},500);
+			$("#page2 .gif").addClass("animated fadeInDown");
+			})
+		$("#page2 .fybtn").click(function(){
+			$(this).parent().transition({y:0},500);
+			$("#page1").transition({y:0},500);
+			})
+		$("#page2 .gif").click(function(){
+			$("#page2 .lyd").addClass("animated fadeInDown");
+			$("#page2 .star").transition({ delay:1000 ,opacity: 1 },1000);
+			$("#page2 .star").addClass("now");
+			$("#page2 .word").transition({ delay:1000 ,opacity: 1 },1000);
+			$("#page2 .clickbtn2").transition({ delay:1500 ,opacity: 1 },1000);
+			})
+		/**************************第三页动画***********************/
+		$(".clickbtn2").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page3 .fybtn").css("display","block");
+			$(this).parent().transition({y:"-200%"},500);
+			$($(this).parent()).next("section").transition({y:"-100%"},500);
+			$("#page3 .background").transition({delay:500 ,scale:1.08},4000);
+			})
+		$("#page3 .fybtn").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page2 .fybtn").css("display","block");
+			$(this).parent().transition({y:0},500);
+			$("#page2").transition({y:"-100%"},500);
+			$("#page3 .background").transition({scale:1},0);
+			})
+
+		/**************************第四页动画***********************/
+		$(".clickbtn3").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page4 .fybtn").css("display","block");
+			$(this).parent().transition({y:"-200%"},500);
+			$($(this).parent()).next("section").transition({y:"-100%"},500);
+			$("#page4 .gif").addClass("animated fadeInDown");
+			})
+		$("#page4 .fybtn").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page3 .fybtn").css("display","block");
+			$(this).parent().transition({y:0},500);
+			$("#page3").transition({y:"-100%"},500);
+			})
+		$("#page4 .gif").click(function(){
+			$("#page4 .lyd").addClass("animated fadeInDown");
+			$("#page4 .star").transition({ delay:1000 ,opacity: 1 },1000);
+			$("#page4 .star").addClass("now");
+			$("#page4 .word").transition({ delay:1000 ,opacity: 1 },1000);
+			$("#page4 .clickbtn4").transition({ delay:2000 ,opacity: 1 },1000);
+			})
+		/**************************第五页动画***********************/
+		$(".clickbtn4").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page5 .fybtn").css("display","block");
+			$(this).parent().transition({y:"-200%"},500);
+			$($(this).parent()).next("section").transition({y:"-100%"},500);
+			$("#page5 .gif").addClass("animated fadeInDown");
+			})
+		$("#page5 .fybtn").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page4 .fybtn").css("display","block");
+			$(this).parent().transition({y:0},500);
+			$("#page4").transition({y:"-100%"},500);
+			})
+		$("#page5 .gif").click(function(){
+			$("#page5 .clickbtn5").transition({ delay:1500 ,opacity: 1 },1000);
+			$("#page5 .lyd").addClass("animated fadeInDown");
+			$("#page5 .word").addClass("animated zoomIn");
+			$("#page5 .word").transition({opacity:1},0);
+			$("#page5 .star").transition({ delay:1000 ,opacity: 1 },1000);
+			$("#page5 .star").addClass("now");
+			})
+		/**************************第六页动画***********************/
+		$(".clickbtn5").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page6 .fybtn").css("display","block");
+			$(this).parent().transition({y:"-200%"},500);
+			$($(this).parent()).next("section").transition({y:"-100%"},500);
+			$("#page6 .background").transition({delay:500 ,scale:1.08},4000);
+			})
+		$("#page6 .fybtn").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page5 .fybtn").css("display","block");
+			$(this).parent().transition({y:0},500);
+			$("#page5").transition({y:"-100%"},500);
+			$("#page6 .background").transition({scale:1},0);
+			})
+		/**************************第七页动画***********************/
+		$(".clickbtn6").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page7 .fybtn").css("display","block");
+			$(this).parent().transition({y:"-200%"},500);
+			$($(this).parent()).next("section").transition({y:"-100%"},500);
+			})
+		$("#page7 .fybtn").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page6 .fybtn").css("display","block");
+			$(this).parent().transition({y:0},500);
+			$("#page6").transition({y:"-100%"},500);
+			})
+		$("#page7 .gif").click(function(){
+			$("#page7 .word").addClass("animated flipInY");
+			$("#page7 .word").transition({opacity:1},0);	
+			$(".clickbtn7").transition({opacity:1,delay:500 },500);
+			})
+		/**************************第八页动画***********************/
+		$(".clickbtn7").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page8 .fybtn").css("display","block");
+			$(this).parent().transition({y:"-200%"},500);
+			$($(this).parent()).next("section").transition({y:"-100%"},500);
+			$("#page8 .background").transition({delay:500 ,scale:1.08},4000);
+			})
+		$("#page8 .fybtn").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page7 .fybtn").css("display","block");
+			$(this).parent().transition({y:0},500);
+			$("#page7").transition({y:"-100%"},500);
+			$("#page8 .background").transition({scale:1},0);
+			})
+		/**************************第九页动画***********************/
+		$(".clickbtn8").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page9 .fybtn").css("display","block");
+			$("#page9 .img2").transition({opacity:1},0);
+			$(this).parent().transition({y:"-200%"},500);
+			$($(this).parent()).next("section").transition({y:"-100%"},500);
+			})
+		$("#page9 .fybtn").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page8 .fybtn").css("display","block");
+			$(this).parent().transition({y:0},500);
+			$("#page8").transition({y:"-100%"},500);
+			})
+		/**************************第九左页动画***********************/
+		$("#page9 .img1").click(function(){
+			$(this).parent().transition({x:"100%"},500);
+			$($(this).parent()).next("#page91").transition({x:"100%"},500);
+			$("#page91 .word").addClass("animated zoomInLeft");
+			$("#page91 .imgright").addClass("animated zoomInRight");
+			$("#page91 .imgcenter").addClass("animated flipInY");
+			$("#page91 .imgcenter").transition({opacity:1},0);
+			
+			})
+		$("#page91 .clickbtn91").click(function(){
+			$(this).parent().transition({x:"-100%"},500);
+			$("#page9").transition({x:0,y:"-100%"},500);
+			$("#page9 .img1").css("-webkit-animation","none");
+			$("#page9 .img2").css("-webkit-animation","none");
+			$("#page9 .img3").css("-webkit-animation","flashing 1s linear 0s normal infinite");
+			$('.clickbtn9').css({width:"20%",opacity:1});
+			$('#page9 .img1').unbind("click");
+		})
+		/**************************第九右页动画***********************/
+		$("#page9 .img3").click(function(){
+			$("#page92").width(bodyWidth);
+			$(this).parent().transition({x:"-100%"},500);
+			$("#page92").transition({x:"-100%"},500);
+			$("#page92 .word").addClass("animated zoomInLeft");
+			$("#page92 .imgcenter").addClass("animated zoomInRight");
+			})
+		$("#page92 .clickbtn92").click(function(){
+			$(this).parent().transition({x:"0",width:0},500);
+			$("#page9").transition({x:0,y:"-100%"},500);
+			$("#page9 .img1").css("-webkit-animation","none");
+			$("#page9 .img2").css("-webkit-animation","none");
+			$("#page9 .img3").css("-webkit-animation","none");
+			$('.clickbtn9').css({width:"20%",opacity:1});
+		})
+		/**************************第十页动画***********************/
+		$(".clickbtn9").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page10 .fybtn").css("display","block");
+			$(this).parent().transition({y:"-200%"},500);
+			$("#page10").transition({y:"-100%"},500);
+			$("#page10 .clickbtn10").addClass("animated rotateIn");
+			$("#page10 .word").addClass("animated fadeInUp");
+			})
+		$("#page10 .fybtn").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page9 .fybtn").css("display","block");
+			$(this).parent().transition({y:0},500);
+			$("#page9").transition({y:"-100%"},500);
+			})
+			/**************************第十一页动画***********************/
+		$(".clickbtn10").click(function(){
+			boxType = $(".hd li.on").index()+1;
+			//alert(boxType)
+			$(".fybtn").css("display","none");
+			$("#page11 .fybtn").css("display","block");
+			if($(".hd li.on").index()==0){
+				$("#page11 .imgright").attr("src","${ctx}/images/img11.png");
+				}
+			if($(".hd li.on").index()==1){
+				$("#page11 .imgright").attr("src","${ctx}/images/img12.png");
+				}
+			if($(".hd li.on").index()==2){
+				$("#page11 .imgright").attr("src","${ctx}/images/img13.png");
+				}
+			$(this).parent().transition({y:"-200%"},500);
+			$("#page11").transition({y:"-100%"},500);
+			$("#page11 .clickbtn11").addClass("animated rotateIn");
+			$("#page11 .word").addClass("animated fadeInUp");
+			})
+		$("#page11 .fybtn").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page10 .fybtn").css("display","block");
+			$(this).parent().transition({y:0},500);
+			$("#page10").transition({y:"-100%"},500);
+			})
+		$("#page11 .clickbtn11").click(function(){
+			$("#page11 .fx_tishi").css("display","block");
+			})
+		$("#page11 .fx_tishi").click(function(){
+			$(this).css("display","none");
+			})
+		/**************************第十二页动画***********************/
+		$(".click11").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page12 .fybtn").css("display","block");
+			$(this).parent().transition({y:"-200%"},500);
+			$($(this).parent()).next("section").transition({y:"-100%"},500);
+			$("#page12 .clickbtn2").transition({ delay:1500 ,opacity: 1 },1000);
+			$("#page12 .word").addClass("animated fadeInDown");
+			})
+		$("#page12 .fybtn").click(function(){
+			$(".fybtn").css("display","none");
+			$("#page11 .fybtn").css("display","block");
+			$(this).parent().transition({y:0},500);
+			$("#page11").transition({y:"-100%"},500);
+			})
+		TouchSlide({ slideCell:"#leftTabBox",effect:"leftLoop" }); 
+		})
+		
+		
+</script>
+</head>
+<body>
+<section id="page1">
+  <img class="page1_top" src="${ctx}/images/word111.png"/>
+  <img class="page1_right" src="${ctx}/images/word112.png"/>
+  <img class="clickbtn1 animated " src="${ctx}/images/click1.png"/>
+  <img class="musicfu" src="${ctx}/images/yinfu.png"/>
+</section>
+<section id="page2">
+ <img src="${ctx}/images/btn.png" class="fybtn" />
+  <img class="clickbtn2" src="${ctx}/images/click1.png"/>
+  <img class="build" src="${ctx}/images/build.png"/>
+  <img class="lyd" src="${ctx}/images/lyd.png"/>
+  <img class="word" src="${ctx}/images/word2.png"/>
+  <img class="gif" src="${ctx}/images/2.gif"/>
+  <img class="star" src="${ctx}/images/star2.png"/>
+  <img class="star1" src="${ctx}/images/star.png"/>
+</section>
+<section id="page3">
+	<img src="${ctx}/images/btn.png" class="fybtn" />
+  <img src="${ctx}/images/page3.jpg"  class="background"/>
+  <img class="clickbtn3" src="${ctx}/images/click3.png"/>
+</section>
+<section id="page4">
+	<img src="${ctx}/images/btn.png" class="fybtn" />
+  <img class="clickbtn4" src="${ctx}/images/click1.png"/>
+  <img class="build" src="${ctx}/images/build4.png"/>
+  <img class="lyd" src="${ctx}/images/img4.png"/>
+  <img class="gif" src="${ctx}/images/4.gif"/>
+  <img class="star" src="${ctx}/images/star4.png"/>
+   <img class="star4" src="${ctx}/images/star41.png"/>
+  <img class="word" src="${ctx}/images/word4.png"/>
+</section>
+<section id="page5">
+	<img src="${ctx}/images/btn.png" class="fybtn" />
+  <img class="clickbtn5" src="${ctx}/images/click5.png"/>
+  <img class="lyd" src="${ctx}/images/img5.png"/>
+  <img class="gif" src="${ctx}/images/1.gif"/>
+  <img class="star" src="${ctx}/images/star5.png"/>
+   <img class="star5" src="${ctx}/images/star51.png"/>
+  <img class="word" src="${ctx}/images/word5.png"/>
+</section>
+<section id="page6">
+ <img src="${ctx}/images/btn.png" class="fybtn" />
+  <img src="${ctx}/images/page6.jpg"  class="background"/>
+  <img class="clickbtn6" src="${ctx}/images/click6.png"/>
+</section>
+<section id="page7">
+	<img src="${ctx}/images/btn.png" class="fybtn" />
+  <img class="clickbtn7" src="${ctx}/images/click6.png"/>
+  <img class="word" src="${ctx}/images/word7.png"/>
+  <img class="gif lyd" src="${ctx}/images/7.gif"/>
+</section>
+<section id="page8">
+	<img src="${ctx}/images/btn.png" class="fybtn" />
+  <img src="${ctx}/images/page8.jpg"  class="background"/>
+  <img class="clickbtn8" src="${ctx}/images/click8.png"/>
+</section>
+<section id="page9">
+	 <img src="${ctx}/images/btn.png" class="fybtn" />
+  <img class="clickbtn9" src="${ctx}/images/click9.png"/>
+  <img class="img1" src="${ctx}/images/img91.png"/>
+  <img class="img2" src="${ctx}/images/img92.png"/>
+  <img class="img3" src="${ctx}/images/img93.png"/>
+  <img class="word" src="${ctx}/images/word9.png"/>
+</section>
+<div id="page91">
+  <img class="word" src="${ctx}/images/word91.png"/>
+  <img class="imgright" src="${ctx}/images/imgright9.png" />
+  <img class="imgcenter" src="${ctx}/images/imgcenter9.png" />
+  <img class="clickbtn91" src="${ctx}/images/click91.png"/>
+</div>
+<div id="page92">
+  <img class="word" src="${ctx}/images/word92.jpg"/>
+  <img class="imgcenter" src="${ctx}/images/imgtop9.png" />
+  <img class="clickbtn92" src="${ctx}/images/click91.png"/>
+</div>
+<section id="page10">
+	 <img src="${ctx}/images/btn.png" class="fybtn" />
+  <P class="word">音乐盒里有太古里礼物哦！</P>
+  <img class="clickbtn10" src="${ctx}/images/click10.png"/>
+  			<div id="leftTabBox" class="tabBox">
+				<div class="bd">
+						<ul>
+                          <img src="${ctx}/images/img02.png">
+						</ul>
+						<ul>
+                        <img src="${ctx}/images/img04.png">
+						</ul>
+						<ul>
+                        <img src="${ctx}/images/img03.png">
+						</ul>
+				</div>
+                <div class="hd">
+					<ul>
+						<li><span></span></li>
+						<li><span></span></li>
+						<li><span></span></li>
+					</ul>
+				</div>
+			</div>
+	
+</section>
+<section id="page11">
+	<img src="${ctx}/images/btn.png" class="fybtn" />
+  <img class="word" src="${ctx}/images/word11.png"/>
+  <img class="imgright" src="${ctx}/images/img11.png" />
+  <img class="clickbtn11" src="${ctx}/images/click11.png"/>
+  <img class="click11" src="${ctx}/images/click8.png" />
+  <img class="fx_tishi" src="${ctx}/images/fenxiang.png" />
+</section>
+<section id="page12">
+	 <img src="${ctx}/images/btn.png" class="fybtn" />
+  <img class="build" src="${ctx}/images/build13.png"/>
+  <img class="word" src="${ctx}/images/word13.png"/>
+  <img class="star" src="${ctx}/images/img131.png"/>
+</section>
+<audio src="${ctx}/music/bgmusic.mp3"  id="audio" loop autoplay="autoplay">
+Your browser does not support the audio tag.
+</audio>
+
+<script type="text/javascript">
+	var appId='${appId}';
+	var timestamp=Number('${timestamp}');
+	var nonceStr='${nonceStr}';
+	var signature='${signature}';
+	var openId = "${openId}"
+	
+	//alert(appId + " "+timestamp +" "+nonceStr +" "+signature)
+	
+/*    
+* 注意：    
+* 1. 所有的JS接口只能在公众号绑定的域名下调用，公众号开发者需要先登录微信公众平台进入“公众号设置”的“功能设置”里填写“JS接口安全域名”。    
+* 2. 如果发现在 Android 不能分享自定义内容，请到官网下载最新的包覆盖安装，Android 自定义分享接口需升级至 6.0.2.58 版本及以上。    
+* 3. 完整 JS-SDK 文档地址：http://mp.weixin.qq.com/wiki/7/aaa137b55fb2e0456bf8dd9148dd613f.html    
+*    
+* 如有问题请通过以下渠道反馈：    
+* 邮箱地址：weixin-open@qq.com    
+* 邮件主题：【微信JS-SDK反馈】具体问题    
+* 邮件内容说明：用简明的语言描述问题所在，并交代清楚遇到该问题的场景，可附上截屏图片，微信团队会尽快处理你的反馈。    
+*/
+
+	wx.config({
+		debug: false,// 开启调试模式,调用的所有api的返回值会在客户端alert出来，若要查看传入的参数，可以在pc端打开，参数信息会通过log打出，仅在pc端时才会打印。
+		appId: appId,// 必填，公众号的唯一标识
+		timestamp: timestamp,// 必填，生成签名的时间戳
+		nonceStr: nonceStr,// 必填，生成签名的随机串
+		signature: signature,// 必填，签名
+		jsApiList: [ // 必填，需要使用的JS接口列表
+			'onMenuShareTimeline',
+			'onMenuShareAppMessage',
+			'onMenuShareQQ'
+		]
+	});
+</script>
+<script type="text/javascript">
+wx.ready(function () {
+	
+	var audio = document.getElementById('audio');
+
+	audio.play();
+	
+	wx.checkJsApi({
+		jsApiList: [
+			'onMenuShareTimeline',
+			'onMenuShareAppMessage',
+			'onMenuShareQQ'
+		],
+		success: function (res) {
+			//alert(JSON.stringify(res));
+		}
+	});
+ 	//获取“分享给朋友”按钮点击状态及自定义分享内容接口
+  wx.onMenuShareAppMessage({
+    title: '免费赢取北京国际音乐节门票', // 分享标题
+    desc: '免费赢取北京国际音乐节门票，开启三里屯太古里音乐之旅吧！', // 分享描述
+    link: window.location.href, // 分享链接
+    imgUrl: '${weixinServerAddr}images/img91.png', // 分享图标
+    type: 'link', // 分享类型,music、video或link，不填默认为link
+    dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+    success: function () { 
+    	//alert("发送成功")
+        // 用户确认分享后执行的回调函数
+    	var url = "${ctx}/music/addShareRecord.htm";
+    	 $.ajax({
+    	  type: "post",
+    	        dataType: "json",
+    	        url: url,
+    	        data: {
+    	          "openId":openId,
+    	          "boxType":boxType
+    	        },
+    	        success: function(data){
+    	            if(data.resultCode == "00"){
+    	                   // alert("");
+    	            }else{
+    	                  //  alert("");
+    	            }
+    	        }
+    	 });
+    	 $(".fx_tishi").hide()
+    },
+    cancel: function () { 
+        // 用户取消分享后执行的回调函数
+    }
+});
+
+	//获取“分享到朋友圈”按钮点击状态及自定义分享内容接口
+	wx.onMenuShareTimeline({
+	      title: '免费赢取北京国际音乐节门票',
+	      link: window.location.href,
+	      imgUrl: '${weixinServerAddr}images/img91.png',
+	      trigger: function (res) {
+	        //用户点击分享到朋友圈
+	      },
+	      success: function (res) {
+			// 用户确认分享后执行的回调函数
+			//alert("分享成功")
+	    	  var url = "${ctx}/music/addShareRecord.htm";
+	     	 $.ajax({
+	     	  type: "post",
+	     	        dataType: "json",
+	     	        url: url,
+	     	        data: {
+	     	          "openId":openId,
+	    	          "boxType":boxType
+	     	        },
+	     	        success: function(data){
+	     	            if(data.resultCode == "00"){
+	     	                   // alert("");
+	     	            }else{
+	     	                  //  alert("");
+	     	            }
+	     	        }
+	     	 });
+	     	 $(".fx_tishi").hide()
+	      },
+	      cancel: function (res) {
+        	// 用户取消分享后执行的回调函数
+	      },
+	      fail: function (res) {
+	        //alert(JSON.stringify(res));
+	      }
+	    });
+
+	//获取“分享到QQ”按钮点击状态及自定义分享内容接口
+	wx.onMenuShareQQ({
+		title: '免费赢取北京国际音乐节门票', // 分享标题
+	    desc: '免费赢取北京国际音乐节门票，开启三里屯太古里音乐之旅吧！', // 分享描述
+	      link: window.location.href,
+	      imgUrl: '${weixinServerAddr}images/img91.png',   
+	     
+	      success: function (res) {
+			// 用户确认分享后执行的回调函数
+	      },
+	      cancel: function (res) {
+        	// 用户取消分享后执行的回调函数
+	      },
+	     
+    }); 
+
+});
+
+wx.error(function (res) {
+  //alert(res.errMsg);
+});
+</script>
+
+</body>
+</html>

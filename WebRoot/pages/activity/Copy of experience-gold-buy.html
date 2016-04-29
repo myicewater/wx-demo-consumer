@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>体验金详情</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no" />
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/main.css">
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+<style>
+	body{ background: #ffffff;}
+	.experience-gold img{ height: 3.15rem;}
+	.experience-gold div a, .experience-gold div span{ height: 3rem; line-height: 3rem;}
+</style>
+</head>
+<body>
+<script>
+if(localStorage.virtualButPageBackFlag == 1 || localStorage.virtualButPageBackFlag == null || typeof(localStorage.virtualButPageBackFlag) == "undefined"){
+	
+}else{
+	localStorage.virtualButPageBackFlag = 1;
+	history.go(0);
+}
+</script>
+	<div class="wrapper">
+		<div class="ty_gold_detail">
+			<div class="top_cont">
+				<p class="p01">当前可以使用的体验金（元）</p>
+				<a class="people_cy">已有<span>${buyCount}</span>人参与体验</a>
+				<div><img src="../images/num_gold.png"><span>${myExperience}</span><hr class="Line"></div>
+				<p class="p_invite">邀请好友送10000元体验金，邀请越多，奖励越多，无上限。</p>
+			</div>
+			<div class="exclusive-of-gold">
+				<img class="lk_icon66" src="../images/lk_icon01.png">
+				<p class="p_txt1">体验金专享</p>
+				<div class="yield-deadline">
+					<span>6.6%</span>
+					<p>预期年化收益率</p>
+					<a>投资期限<i>2</i>天</a>
+				</div>
+				<p class="p_txt2">已有${buyCount}人参与体验</p>
+				<div class="experience-gold">
+					<div>
+						<img src="../images/voucher01.png"><a class="subtract" id="jian"></a><span id="num">${experienceNum}</span><a class="add" id="add"></a>
+					</div>
+				</div>
+				<a onclick="buy()" class="btn_use">使用体验金购买</a>
+			</div>
+		</div>
+		<div style="height: 5rem;"></div>
+		<div class="foot-div">
+			<ul>
+					<li  onclick="javascript:window.location.href='${ctx}/wllcmember/getMyFriends.htm?userId='+localStorage.userId"><a><p><img src="../images/foot_home_icon_on.png"></p><span>Link消息</span><em></em></a></li>
+					<li onclick="javascript:window.location.href='${ctx}/wllcmember/myFinancialPlanners.htm?userId='+localStorage.userId"><a><p><img src="../images/foot_active_icon.png"></p><span>Link理财师</span><em></em></a></li>
+					<li onclick="javascript:window.location.href='${ctx}/login/myLink.htm?userId='+localStorage.userId+'&openId='+localStorage.openId"><a><p><img src="../images/foot_user_icon.png"></p><span>Link我</span></a></li>
+				</ul>
+		</div>
+	</div>
+	<script>
+	var leftCount = "${experienceNum}";
+	var vitualNum = leftCount;
+	function buy(){
+		
+		if("unbound"==localStorage.userId){
+			window.location.href="${ctx}/login/unbound.htm"
+		}
+		
+		if(vitualNum <=0){
+			return;
+		}
+
+		 var url = "${ctx}/activity/buyVitualProduct.htm";
+		 $.ajax({
+		  type: "post",
+		        dataType: "json",
+		        url: url,
+		        data: {
+		         "userId":localStorage.userId,
+		         "buyAmount":vitualNum*10000
+		        },
+		        success: function(data){
+		            if(data.resultCode == "00"){
+		            	localStorage.virtualButPageBackFlag = 0;
+		                    window.location.href="${ctx}/activity/toBuySuccessPage.htm";
+		            }else{
+		                    alert("");
+		            }
+		        }
+		 });
+	}
+	
+	
+	    $(function() {
+			// 体验金券加减
+			$("#jian").click(function(){
+    			var num = Number($(this).next().text());
+	    	  	if (num>0) {
+	    	  		$(this).next().text(num-1);
+	    	  		vitualNum --;
+	    	  	};	
+			});
+			$("#add").click(function(){
+				var num = Number($(this).prev().text());
+				if (num<leftCount) {
+	    	  		$(this).prev().text(num+1);
+	    	  		vitualNum ++;
+	    	  	};	
+			});
+	    });
+	</script>
+</body>
+</html>

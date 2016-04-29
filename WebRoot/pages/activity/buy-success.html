@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>
+<#if activityOver == 'no'>
+购买成功
+<#else>
+提示
+</#if>
+</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<meta name="format-detection" content="telephone=no, email=no" />
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/main.css">
+<script type="text/javascript" src="../js/jquery-1.8.3.min.js" ></script>
+<script type="text/javascript">
+        $(function(){
+            fontSize();
+            $(window).on('resize',function(){
+                fontSize();
+            });
+            function fontSize(){
+                var winW = $(window).width();
+                var fontsize = winW/20;
+                if(winW>=320){
+                    $('html').css('font-size',fontsize);
+                }
+
+            }
+        });
+</script>
+<style>
+	body{ background: #ffffff;}
+</style>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="buy-Success">
+			<div class="success-expire">
+				<!-- 体验金购买成功  class="tc" display:block; -->
+				<#if activityOver == 'no'>
+				<div class="tc" style="display:block" >
+					<a class="ts-success">已购买成功</a>
+					<p>为您推荐了其他精选理财产品，快来看看吧!</p>
+				</div>
+				<#else>
+				<!-- 体验金过期  class="expire" display:block; -->
+				<p class="expire" style="display:block">第一期体验金活动已结束，请关注公众号推文，及时参与第二期</p>
+				</#if>
+			</div>
+			<div class="div_safe">
+				<p class="p1">${productInfo.prdName}${productInfo.prdSubName}</p>
+				<div style=" margin-top: 1.5rem; padding:0 0.3rem;">
+					<div class="pay-sy01">
+	           			<div class="peo-buy">
+	           				<span>${productInfo.proportion}</span>%
+	           				<a>的人还购买</a>
+	           			</div>
+	                </div>
+					<div class="secure_txt01">
+						<p style="padding-left:1rem;">预期年化收益率：<font>${profit}</font>%</p>
+						<p style="padding-left:1rem;">投资期限：<font>${productInfo.timeLong}</font>天</p>
+						<p onclick="javascript:window.location.href='${ctx}/product/getProductInfoById.htm?productId=${productInfo.prdId}'" class="tc p_btn" ><a class="immediate-buy" >立即购买</a></p>
+					</div>
+					<div class="fix"></div>
+				</div>
+			</div>
+			<div class="div_safe">
+				<p class="p1">${insuranceProduct.prdName}</p>
+				<div style=" margin-top: 1.5rem; padding:0 0.3rem;">
+					<img class="bx-img" src="../images/bx_img2.png">
+					<div class="secure_txt01">
+						<p>保费低：每天仅需<font>1</font>毛<font>6</font></p>
+						<p>保障全：意外身故、意外医疗均可保</p>
+						<p>人群广：<font>1</font>至<font>70</font>周岁皆可投保</p>
+						<p onclick="window.location.href='${ctx}//insurance/toInsuranceShiDai.htm'"  class="tc p_btn" ><a class="immediate-buy" style="margin-left: 1.6rem;">立即购买</a></p>
+					</div>
+					<div class="fix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

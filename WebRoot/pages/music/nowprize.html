@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+<title>领取奖品</title>
+</head>
+<script src="${ctx}/js/jquery-1.10.2.min.js"></script>
+<link href="${ctx}/css/prize.css" rel="stylesheet">
+<!--<link href="css/fakeloader.css" rel="stylesheet">
+--><script>
+	var bodyWidth=document.documentElement.clientWidth
+	|| window.innerWidth
+	|| document.body.clientWidth;
+	var bodyHeight=window.innerHeight
+	|| document.documentElement.clientHeight
+	|| document.body.clientHeight;
+	$(function(){
+		$("section").css("width",bodyWidth);
+		$("section").css("height",bodyHeight);
+		$("body").css("width",bodyWidth);
+		$("body").css("height",bodyHeight);
+		$(".tabBox .bd img").css("width",bodyWidth);
+		$("#leftTabBox").css("width",bodyWidth);
+		//$("#prize_page1 .clickbtn1").transition({ delay:1500 ,opacity: 1 },1000);
+		$("#prize_page1 .wordp1").addClass("animated fadeInUp");
+		
+		
+		
+		$(".fuckBtn").click(function(){
+			//alert($(this).text())
+			if($(this).text() == "领取成功")
+			{
+				alert("已经领取过了")
+				return;
+			}
+			
+			var tttt = $(this)
+			
+			var url = "${ctx}/music/getAward.htm";
+	    	 $.ajax({
+	    	  type: "post",
+	    	        dataType: "json",
+	    	        url: url,
+	    	        data: {
+	    	          "openId":"${openId}"
+	    	        },
+	    	        success: function(data){
+	    	            if(data.resultCode == "00"){
+	    	                    alert("领取成功");
+	    	                    tttt.text("领取成功")
+	    	                    //history.go(0)
+	    	            }else{
+	    	                   alert("领取失败");
+	    	            }
+	    	        }
+	    	 });
+		});
+		
+
+	})
+		
+	
+	function getAward(){
+		
+		var url = "${ctx}/music/getAward.htm";
+    	 $.ajax({
+    	  type: "post",
+    	        dataType: "json",
+    	        url: url,
+    	        data: {
+    	          "openId":"${openId}"
+    	        },
+    	        success: function(data){
+    	            if(data.resultCode == "00"){
+    	                    alert("领取成功");
+    	                    $(this).text("领取成功")
+    	                    //history.go(0)
+    	            }else{
+    	                   alert("领取失败");
+    	            }
+    	        }
+    	 });
+	}
+	
+</script>
+<body>
+<#if code == "00">
+<#if level == 1>
+<section class="nowprize prize1" style="display:block;">
+  <div>
+  <img src="${ctx}/images/nowprize/nowprize1.png" />
+  <p class="fuckBtn" >领取奖品</p>
+  </div>
+</section>
+</#if>
+<#if level == 2>
+<section class="nowprize prize2" style="display:block;">
+  <div>
+  <img src="${ctx}/images/nowprize/nowprize2.png" />
+  <p class="fuckBtn" >领取奖品</p>
+  </div>
+</section>
+</#if>
+<#if level == 3>
+<section class="nowprize prize3" style="display:block;">
+  <div>
+  <img src="${ctx}/images/nowprize/nowprize3.png" />
+  <p class="fuckBtn" >领取奖品</p>
+  </div>
+</section>
+</#if>
+<#if level == 4>
+<section class="nowprize prize4" style="display:block;">
+  <div>
+  <img src="${ctx}/images/nowprize/nowprize4.png" />
+  <p class="fuckBtn" >领取奖品</p>
+  </div>
+</section>
+</#if>
+<#elseif code == '01'>
+<section class="successful" style="display:block;">
+  <div>
+  <img src="${ctx}/images/nowprize/bg.png" />
+  <span>您已成功领取奖品,</br>无需重复领取</span>
+  <p>谢谢您的参与</p>
+  </div>
+</section>
+<#elseif code == '02'>
+<section class="no" style="display:block;">
+  <div>
+  <img src="${ctx}/images/nowprize/bg.png" />
+  <span>没有查询到您的中奖信息</span>
+  <p>谢谢您的参与</p>
+  </div>
+</section>
+</#if>
+</body>
+</html>

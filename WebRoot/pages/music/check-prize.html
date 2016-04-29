@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"> 
+<title>打开礼盒</title>
+</head>
+<script src="${ctx}/js/jquery-1.10.2.min.js"></script>
+<script src="${ctx}/js/hammer.js"></script>
+<script src="${ctx}/js/Transit.js"></script>
+<link href="${ctx}/css/prize.css" rel="stylesheet">
+<link href="${ctx}/css/animate.min.css" rel="stylesheet">
+<link href="${ctx}/css/animation.css" rel="stylesheet">
+<!--<link href="css/fakeloader.css" rel="stylesheet">
+-->
+
+<script>
+	var leftTimes = Number("${leftTimes}")
+	var openId  = "${openId}"
+	var bodyWidth=document.documentElement.clientWidth
+	|| window.innerWidth
+	|| document.body.clientWidth;
+	var bodyHeight=window.innerHeight
+	|| document.documentElement.clientHeight
+	|| document.body.clientHeight;
+	$(function(){
+		$("section").css("width",bodyWidth);
+		$("section").css("height",bodyHeight);
+		$("body").css("width",bodyWidth);
+		$("body").css("height",bodyHeight);
+		$("#page91").css("height",bodyHeight);
+		$("#page92").css("height",bodyHeight);
+		$(".tabBox .bd img").css("width",bodyWidth);
+		$("#leftTabBox").css("width",bodyWidth);
+			$("#prize_page1 .clickbtn1").transition({ delay:1500 ,opacity: 1 },1000);
+			$("#prize_page1 .wordp1").addClass("animated fadeInUp");
+			
+			
+
+	})
+		
+		
+</script>
+<body>
+<#if code == 1>
+<section class="prize prize1" style="display:block;">
+  <img src="${ctx}/images/prize/prize1.png" />
+</section>
+</#if>
+<#if code == 2>
+<section class="prize prize2" style="display:block;">
+  <img src="${ctx}/images/prize/prize2.png" />
+</section>
+</#if>
+<#if code == 3>
+<section class="prize prize3" style="display:block;">
+  <img src="${ctx}/images/prize/prize3.png" />
+</section>
+</#if>
+<#if code == 4>
+<section class="prize prize4" style="display:block;">
+  <img src="${ctx}/images/prize/prize4.png" />
+
+</section>
+</#if>
+<#if code == 0>
+<section id="prize_page1" style="display:block;">
+ 
+  <!-- <img class="clickbtn1" src="${ctx}/images/prize/pclick1.png"/> -->
+  <img class="prize_show" src="${ctx}/images/prize/sorry.png"/>
+</section>
+</#if>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.link.dao.activity.AwardMapper" >
+  <resultMap id="BaseResultMap" type="com.link.model.activity.Award" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="award_level" property="awardLevel" jdbcType="INTEGER" />
+    <result column="taltol_count" property="taltolCount" jdbcType="INTEGER" />
+    <result column="left_count" property="leftCount" jdbcType="INTEGER" />
+    <result column="creat_time" property="creatTime" jdbcType="TIMESTAMP" />
+    <result column="description" property="description" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, award_level, taltol_count, left_count, creat_time, description
+  </sql>
+  
+  <select id="getAwardByLevel" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+  select * from award t where t.award_level = #{level}
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from award
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from award
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.link.model.activity.Award" >
+    insert into award (id, award_level, taltol_count, 
+      left_count, creat_time, description
+      )
+    values (#{id,jdbcType=INTEGER}, #{awardLevel,jdbcType=INTEGER}, #{taltolCount,jdbcType=INTEGER}, 
+      #{leftCount,jdbcType=INTEGER}, #{creatTime,jdbcType=TIMESTAMP}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.link.model.activity.Award" >
+    insert into award
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="awardLevel != null" >
+        award_level,
+      </if>
+      <if test="taltolCount != null" >
+        taltol_count,
+      </if>
+      <if test="leftCount != null" >
+        left_count,
+      </if>
+      <if test="creatTime != null" >
+        creat_time,
+      </if>
+      <if test="description != null" >
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="awardLevel != null" >
+        #{awardLevel,jdbcType=INTEGER},
+      </if>
+      <if test="taltolCount != null" >
+        #{taltolCount,jdbcType=INTEGER},
+      </if>
+      <if test="leftCount != null" >
+        #{leftCount,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null" >
+        #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.link.model.activity.Award" >
+    update award
+    <set >
+      <if test="awardLevel != null" >
+        award_level = #{awardLevel,jdbcType=INTEGER},
+      </if>
+      <if test="taltolCount != null" >
+        taltol_count = #{taltolCount,jdbcType=INTEGER},
+      </if>
+      <if test="leftCount != null" >
+        left_count = #{leftCount,jdbcType=INTEGER},
+      </if>
+      <if test="creatTime != null" >
+        creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="description != null" >
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.link.model.activity.Award" >
+    update award
+    set award_level = #{awardLevel,jdbcType=INTEGER},
+      taltol_count = #{taltolCount,jdbcType=INTEGER},
+      left_count = #{leftCount,jdbcType=INTEGER},
+      creat_time = #{creatTime,jdbcType=TIMESTAMP},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

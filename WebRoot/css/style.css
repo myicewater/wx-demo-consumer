@@ -1,0 +1,136 @@
+@charset "utf-8";
+/* CSS Document */
+body,p{padding:0; margin:0; font-family:"微软雅黑" ; overflow:hidden;}
+section{ position:fixed;top:100%; left:0; }
+.gif{ background:url(../images/gif.png) no-repeat; background-size:100% auto;}
+/********************闪动*****************/
+@-webkit-keyframes flashing{
+  0% {
+    -webkit-transform: scale(1,1);
+}
+50% {
+    -webkit-transform: scale(1.05,1.05);
+}
+100% {
+   -webkit-transform: scale(1,1);
+}
+  }
+  /********************转圈*****************/
+  @-webkit-keyframes circles {
+  0% {
+    -webkit-transform: rotateZ(0deg);
+}
+50% {
+    -webkit-transform: rotateZ(180deg);
+}
+100% {
+   -webkit-transform: rotateZ(360deg);
+}
+  }
+  /********************透明度*****************/
+@-webkit-keyframes opacity{
+  0% {  opacity:1;}
+50% { opacity:0.3;}
+100% { opacity:1;}
+  }
+  .fybtn{ position:absolute; width:15px; top:5px; left:48%;  z-index:9999}
+/********************第一页*****************/
+#page1{  background:url(../images/page1.jpg) no-repeat; background-size:100% 100%; top:0;}
+#page1 .clickbtn1{ width:60%; position: absolute; top:23%; left:20%; z-index:9; opacity:0;-webkit-animation:flashing 1s linear 1.5s normal infinite;}
+#page1 .musicfu{ width:80%; position: absolute; top:18%; left:10%;-webkit-animation:circles 3s linear 1.5s normal infinite; opacity:0;}
+#page1 .page1_top,#page1 .page1_right{ font-size:15px; color:#fff; display:block; width:15px; position:absolute;line-height:15px; opacity:0;top: 2%;}
+#page1 .page1_top{ top:0; left:60%; width:10%;  }
+#page1 .page1_right{ top:0%; left:10%; width:100%; }
+/********************第二页*****************/
+#page2{  background:url(../images/page2.png) no-repeat; background-size:100% 100%;}
+#page2 .build{ position:absolute; bottom:0; left:0; width:100%; z-index:6;}
+#page2 .clickbtn2{ width:35%; position: absolute; top:45%; left:5%; z-index:99; opacity:0;-webkit-animation:flashing 1s linear 2s normal infinite;}
+#page2 .lyd{position:absolute; top:18%; width:100%; left:0;animation-delay: 0.5s;
+animation-duration: 1.5s;z-index:3; opacity:0; }
+#page2 .gif{position:absolute; top:80%; width:35%;left:60%; z-index:7;-webkit-animation:flashing 1s linear 2s normal infinite;}
+#page2 .star{ width:100%; position: absolute; top:0%; left:0%;  opacity:0;}
+#page2 .star1{ width:100%; position: absolute; top:0%; left:0%; -webkit-animation:opacity 4s linear 2s normal infinite;}
+#page2 .now{-webkit-animation:opacity 4s linear 2s normal infinite;}
+#page2 .word{width: 100%;position: absolute;top: 22%;left: 0;opacity: 0; z-index:9;}
+/********************第三页*****************/
+.background{  background:url(../images/page3.jpg) no-repeat; background-size:100% 100%;
+-webkit-transform:scale(1,1); width:100%;height: 100%;}
+#page3 .clickbtn3{ width:35%; position: absolute; bottom:6%; left:32.5%; z-index:99; -webkit-animation:flashing 1s linear 2s normal infinite;}
+/********************第四页*****************/
+#page4{  background:url(../images/page4.png) no-repeat; background-size:100% 100%;}
+#page4 .build{ position:absolute; top:0; left:0; width:100%; z-index:6;height: 100%;}
+#page4 .clickbtn4{ width:40%; position: absolute; top:58%; left:5%; z-index:99; opacity:0;-webkit-animation:flashing 1s linear 3s normal infinite;}
+#page4 .lyd{position:absolute; top:10%; width:100%; left:0;animation-delay: 0.5s;
+animation-duration: 1.5s;z-index:3; opacity:0;}
+#page4 .gif{position:absolute; top:80%; width:35%;left:60%; z-index:999; -webkit-animation:flashing 1s linear 2s normal infinite;}
+#page4 .star{ width:100%; position: absolute; top:0%; left:0%;z-index:9;opacity:0;}
+#page4 .star4{ width:100%; position: absolute; top:0%; left:0%;z-index:9;opacity:0;-webkit-animation:opacity 4s linear 2s normal infinite;}
+#page4 .word{ width:53%; position: absolute; bottom:3%; left:2%; opacity:0;}
+/********************第五页*****************/
+#page5{  background:url(../images/page5.png) no-repeat; background-size:100% 100%;}
+#page5 .clickbtn5{ width:42%; position: absolute; top:53%; right:5%; z-index:99; opacity:0;-webkit-animation:flashing 1s linear 3s normal infinite;}
+#page5 .lyd{position:absolute; top:0; width:100%; left:0;animation-delay: 0.5s;
+animation-duration: 1.5s;z-index:3; opacity:0; }
+#page5 .gif{position:absolute; top:80%; width:35%;left:60%; z-index:999;-webkit-animation:flashing 1s linear 2s normal infinite;}
+#page5 .star{ width:100%; position: absolute; top:0%; left:0%; z-index:9;opacity:0;}
+#page5 .star5{ width:100%; position: absolute; top:0%; left:0%; z-index:9;opacity:0;-webkit-animation:opacity 4s linear 2s normal infinite;}
+#page5 .word{ width:65%; position: absolute; bottom:10%; left:2%; opacity:0;}
+/********************第六页*****************/
+#page6 .background{  background:url(../images/page6.jpg) no-repeat; background-size:100% 100%;
+-webkit-transform:scale(1,1); width:100%;}
+#page6 .clickbtn6{ width:35%; position: absolute; bottom:10%; left:32.5%; z-index:99; -webkit-animation:flashing 1s linear 2s normal infinite;}
+/********************第七页*****************/
+#page7{  background:url(../images/page7.jpg) no-repeat; background-size:100% 100%;}
+#page7 .clickbtn7{ width:35%; position: absolute; bottom:5%; left:5%; z-index:99; -webkit-animation:flashing 1s linear 5s normal infinite; opacity:0;}
+#page7 .gif{position:absolute; bottom:4%; width:35%;left:60%; z-index:7;-webkit-animation:flashing 1s linear 2s normal infinite;}
+#page7 .word{ width:50%; position: absolute; top:20%; left:28%; opacity:0;}
+/********************第八页*****************/
+#page8 .background{  background:url(../images/page8.jpg) no-repeat; background-size:100% 100%;
+-webkit-transform:scale(1,1); width:100%;}
+#page8 .clickbtn8{ width:35%; position: absolute; bottom:10%; left:32.5%; z-index:99; -webkit-animation:flashing 1s linear 2s normal infinite;}
+/********************第九页*****************/
+#page9 {  background:url(../images/page9.jpg) no-repeat; background-size:100% 100%;}
+#page9 .clickbtn9{  position: absolute; bottom:2%; left:40%; z-index:99; -webkit-animation:flashing 1s linear 2s normal infinite;opacity:0; width:0;}
+#page9 .img1{ position:absolute; top:13%; left:0; z-index:9; width:60%;-webkit-animation:flashing 1s linear 2s normal infinite;}
+#page9 .img2{ position:absolute; top:3%; left:0; z-index:7; width:90%;-webkit-animation:flashing 1s linear 2s normal infinite; opacity:0;}
+#page9 .img3{  position: absolute;top: 10%;right: 0;z-index: 8; width: 60%;}
+#page9 .word{ width:70%; position: absolute; bottom:15%; left:15%;}
+#page91{ width:100%;background:url(../images/pageleft9.jpg) no-repeat; background-size:100% 100%; position:absolute; top:0; left:-100%;}
+#page91 .word{ width:70%; position: absolute; bottom:0; left:0;-webkit-animation-delay: 0s;}
+#page91 .imgcenter{width:20%; top:12%; opacity:0; left:40%; position:absolute;-webkit-animation-delay: 1s;}
+#page91 .imgright{width:40%; top:25%;  right:0%; position:absolute;-webkit-animation-delay: 0s;}
+#page91 .clickbtn91{ width:20%; position: absolute; top:13%; left:0%; z-index:99; -webkit-animation:flashing 1s linear 2s normal infinite;}
+#page92{ background:url(../images/pageright9.jpg) no-repeat; background-size:100% 100%; position:absolute; top:0; left:100%; overflow:hidden;}
+#page92 .word{ width:70%; position: absolute; bottom:0; left:0;-webkit-animation-delay: 0s;}
+#page92 .imgcenter{width:100%; top:0%; left:0%; position:absolute;-webkit-animation-delay: 0s;}
+#page92 .imgright{width:40%; top:25%;  right:0%; position:absolute;-webkit-animation-delay: 0s;}
+#page92 .clickbtn92{ width:20%; position: absolute; top:13%; left:0%; z-index:99; -webkit-animation:flashing 1s linear 2s normal infinite;}
+/********************第十页*****************/
+#page10 {  background:url(../images/page10.jpg) no-repeat; background-size:100% 100%;}
+#page10 .clickbtn10{  position: absolute; top:67%; left:37.5%; z-index:99;  width:25%;}
+#page10 .img3{  position: absolute;top: 10%;right: 0;z-index: 8; width: 60%;}
+#page10 .word{ width: 70%;position: absolute;bottom: 10%;left: 15%;font-size: 20px;color: #fff;text-align: center;}
+
+.path{ padding:0 0 5px 5px;   }
+#leftTabBox{ width:414px; position:absolute; top:30%; left:0;}
+	/* 本例子css -------------------------------------- */
+	img { border:0; margin: 0; padding: 0;   }
+	.tabBox .bd ul{ padding:0;}
+	.tabBox .hd{ height:40px; line-height:40px; padding:0 10px; font-size:20px;  position:relative;  }
+	.tabBox .hd ul{ position:absolute; height:15px; top:0; overflow:hidden; padding: 0; margin: 0; width:30%;width: 50%;left: 25%; }
+	.tabBox .hd ul li{ float:left; color:#666; width:33.3%; list-style:none; }
+	.tabBox .hd ul li span{display:block; width:10px; height:10px; border:2px solid #fff; background:none;  margin:0 auto; border-radius:50%;}
+	.tabBox .hd ul .on span{ display:block; width:10px; height:10px; border:2px solid #fff; background:#00479d; }
+/********************第十一页*****************/
+#page11{  background:url(../images/page11.jpg) no-repeat; background-size:100% 100%;}
+#page11 .clickbtn11{  position: absolute; top:60%; left:5%; z-index:99;  width:25%;}
+#page11 .click11{  position: absolute; top:60%; right:5%; z-index:99;  width:25%;  -webkit-animation:flashing 1s linear 2s normal infinite;}
+#page11 .word{ width:80%; position:absolute; bottom:10%; left:10%;}
+#page11 .imgright{ width:100%; position:absolute; top:30%; left:0;}
+#page11 .fx_tishi{position:absolute; top:0; left:0;width:100%; height:100%; display:none; z-index:999;}
+/********************第十二页*****************/
+#page12{  background:url(../images/page12.jpg) no-repeat; background-size:100% 100%;}
+#page12 .build{ position:absolute; bottom:0; left:0; width:100%; z-index:6;}
+#page12 .clickbtn12{ width:35%; position: absolute; top:45%; left:5%; z-index:99; opacity:0;-webkit-animation:flashing 1s linear 2s normal infinite;}
+#page12 .star{ width:100%; position: absolute; top:0%; left:0%; -webkit-animation:opacity 4s linear 2s normal infinite; opacity:0;}
+#page12 .word{ width:60%; position:absolute; top:17%; left:20%; z-index:9;}

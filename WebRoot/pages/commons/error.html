@@ -1,0 +1,128 @@
+<#include "/commons/layout.html"/>
+<@head title="错误页面">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black">
+<link rel="stylesheet" href="../css/reset.css">
+<script src="../js/iscroll.js"></script>
+<script src="../js/zepto.min.all.js"></script>
+<style>
+a{text-decoration:none;}
+img{border:none;}
+._body{}
+._body img{ display:block; margin:0 auto; width:180px; height:103px;}
+body{font-family: "Microsoft YaHei","微软雅黑";}
+.wrap{
+	   width:100%;}
+.wrap ul{ width:100%;
+		 border-bottom:2px solid #e6e6e6;
+		 height:40px;
+		 margin-bottom:40px;}   
+.wrap ul li{ float:left;
+			width:50%;
+			 line-height:40px;
+			 font-size:1em;
+			 text-align:center;}
+.wrap ul li a{ color:#999;}	 
+.wrap form{ width:90%;
+	margin-left:5%;
+	text-align:center;
+	overflow:hidden;
+	margin-top:60px;
+}
+@media screen and (width:320px){
+	.wrap form{
+		margin-top:60px;
+	}
+}
+
+@media screen and (max-width: 400px) {
+    .wrap form{
+		margin-top:60px;
+	}
+}
+@media screen and (min-width: 400px) and (max-width: 640px) {
+   .wrap form{
+		margin-top:140px;
+	}
+}
+
+@media screen and (min-width: 640px) and (max-width: 1024px) {
+    .wrap form{
+		margin-top:160px;
+	}
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1366px) {
+    .wrap form{
+		margin-top:180px;
+	}
+}
+
+.wrap form input{ font-size:1em; color:#999;height:46px;
+border-radius:10px;
+	  border:1px solid #ccc;
+	  line-height:46px;
+}
+.inu{ width:94%;    
+	  background:#fff;
+	  padding-left:5%;
+	  }
+
+.wrap form p{ padding:14px 0 14px 0;
+			text-align:left;}
+.wrap form p a{ color:#7094b7;
+				font-size:1em;
+				}
+#btn{width:99%;
+	 font-weight:bold;
+	 color:#fff;
+	 opacity:1;
+	 font-size:1.25em;
+	 background:#f60; 
+	 text-align:center;
+	 border:none;
+	 margin-bottom:10px;
+	 margin-top:10px;}
+._label{ line-height:20px; font-size:0.75em; height:18px; color:#f00; display:block; text-align:left; padding-left:8px;}
+::-webkit-input-placeholder {
+	color: #777;
+	line-height:46px;
+}
+/* WebKit browsers */
+
+/* Mozilla Firefox 4 to 18 */
+:-moz-placeholder {
+	color: #777;
+	opacity: 1;
+	line-height:46px;
+}
+/* Mozilla Firefox 19+ */
+::-moz-placeholder {
+	color: #777;
+	opacity: 1;
+	line-height:46px;
+}
+/* Internet Explorer 10+ */
+:-ms-input-placeholder {
+	color: #777;
+	line-height:46px;
+}
+body{height:auto;height:auto; overflow-y:hidden; }
+</style>
+
+</@head>
+<@body>
+
+<div class="_body"  style="overflow:hidden;">
+
+<div class="wrap" id="wrap">	
+<p>系统出现异常了，关闭当前页面重新试一下吧</p>
+
+</div>
+</div>
+
+<script>
+
+</script>
+</@body>

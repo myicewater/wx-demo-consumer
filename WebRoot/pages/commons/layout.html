@@ -1,0 +1,26 @@
+<#macro head title >
+ <html>
+ <head>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<meta name="apple-itunes-app" content="app-id=425349261"/>
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="Keywords" content="理财|投资理财|互联网金融|互联网理财产品|"/>
+	<meta name="Description" content="为投资理财用户提供便捷、透明、安全、高效的互联网理财投资服务，安全固定高收益。"/>
+    <title>${title}</title>
+    <#include "commons/global.html"/>
+    <#nested>
+ </head>
+</#macro>
+ 
+<#macro body isCommonPage="true">
+<body>
+	<#if isCommonPage == "true">
+	 	<div class="main">
+			<#include "commons/header.html"/>
+		</div>
+	</#if>
+   <#nested>
+</body>
+</html>
+</#macro>

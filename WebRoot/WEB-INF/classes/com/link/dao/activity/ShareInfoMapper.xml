@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.link.dao.activity.ShareInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.link.model.activity.ShareInfo" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="open_id" property="openId" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="is_used" property="isUsed" jdbcType="CHAR" />
+    <result column="box_type" property="boxType" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, open_id, create_time, is_used
+  </sql>
+  
+  <select id="getShareTime" resultType="java.lang.Integer" parameterType="map" >
+  	select count(*) from share_info t where t.open_id = #{openId}
+  </select>
+  
+  <select id="getBoxType" parameterType="map" resultType="string">
+  	select t.box_type from share_info t where t.open_id = #{openId} order by t.create_time desc limit 1
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from share_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from share_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.link.model.activity.ShareInfo" >
+    insert into share_info (id, open_id, create_time, 
+      is_used,box_type)
+    values (#{id,jdbcType=INTEGER}, #{openId,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{isUsed,jdbcType=CHAR}, #{boxType,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.link.model.activity.ShareInfo" >
+    insert into share_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="openId != null" >
+        open_id,
+      </if>
+      <if test="createTime != null" >
+        create_time,
+      </if>
+      <if test="isUsed != null" >
+        is_used,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="openId != null" >
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isUsed != null" >
+        #{isUsed,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.link.model.activity.ShareInfo" >
+    update share_info
+    <set >
+      <if test="openId != null" >
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="isUsed != null" >
+        is_used = #{isUsed,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.link.model.activity.ShareInfo" >
+    update share_info
+    set open_id = #{openId,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      is_used = #{isUsed,jdbcType=CHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
